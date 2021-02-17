@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+h1, h2, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+body {
+  margin: 0;
+}
+
+.top {
+  text-align: center;
+}
+
+.middle {
+  margin-top: 100px;
+  display: flex;
+  height: 30vh;
+  padding: 20px;
+}
+
+.game-center {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 10px;
+  width: 50vw;
+  text-align: center;
+  background: rgba(51, 51, 51, 0.1);
+  margin-left: 10px;
+}
+
+.game-info {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 10px;
+  width: 50vw;
+  text-align: center;
+  background: rgba(51, 51, 51, 0.1);
+  margin-left: 10px;
+}
+
+#container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  margin: 0 auto;
+}
+
+.set-player-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 12px;
+  border: none;
+  padding: 5px 30px;
+  background: #61b15a;
+  color: #eee;
+  margin-top: 50px;
+}
+
+.set-player-btn:hover {
+  opacity: 0.7;
+}
+
+/* .board {
+  background-color: rgba(0, 0, 255, 0.8);
+  display: inline-block;
+  border: 2px solid rgb(1, 10, 63);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.col {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid rgb(1, 10, 63);
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.col.empty {
+  cursor: pointer;
+} */
