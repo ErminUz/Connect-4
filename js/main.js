@@ -1,4 +1,3 @@
-import Board from './Board.js'
 import Game from './Game.js'
 import SetPlayerComponent from './SetPlayerComponent.js'
 

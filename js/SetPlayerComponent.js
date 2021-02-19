@@ -16,14 +16,14 @@ export default class SetPlayerComponent {
         <label class="computer">Computer</label>
         <input type="checkbox">
       </div>
-      <input class ="input-name" placeholder="Name...">
+      <input name="player-input" class="input-name input1" placeholder="Name...">
       <hr>
       <h3>Player 2:</h3>
       <div class="checkbox-container">
         <label class="computer">Computer</label>
         <input type="checkbox">
       </div>
-      <input class ="input-name" placeholder="Name...">
+      <input name="player-input" class="input-name input2" placeholder="Name...">
       <hr>
       <div class="playbtn-container">
         <button class="play">Play</button>

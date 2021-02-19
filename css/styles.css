@@ -179,12 +179,42 @@ hr {
 .hide {
   display: none;
 }
-/* .board {
+
+.wrapper-board {
+  text-align: center;
+}
+
+.top-wrapper {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.top-wrapper-hr {
+  width: 75%;
+  margin: 10px auto 50px auto;
+}
+
+.flex {
+  margin: 0 auto;
+  display: flex;
+  width: 50%;
+}
+
+.player-container {
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 0 20px;
+  width: 10vw;
+  margin: 0 auto;
+}
+
+.board {
   background-color: rgba(0, 0, 255, 0.8);
   display: inline-block;
   border: 2px solid rgb(1, 10, 63);
   border-radius: 6px;
   padding: 2px;
+  text-align: center;
 }
 
 .col {
@@ -199,4 +229,36 @@ hr {
 
 .col.empty {
   cursor: pointer;
-} */
+}
+
+.hover-board {
+  background: rgba(255, 0, 0, 0.555);
+}
+
+.placing {
+  background: red;
+}
+
+.col.green {
+  background: green;
+}
+
+.col.red {
+  background: red;
+}
+
+.hoverplayer-green {
+  background: rgba(0, 128, 0, 0.5);
+}
+
+.hoverplayer-red {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.player-container-red {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.player-container-green {
+  background: rgba(1, 117, 1, 0.5);
+}
