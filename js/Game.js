@@ -11,7 +11,6 @@ export default class Game {
     this.gameOver = false;
     this.playerturn = 1;
     this.maxRounds = 42;
-    this.connect = 4;
     this.colors = ['red', 'green'];
     this.current = 0;
     this.emptyCells = 0;
@@ -40,7 +39,7 @@ export default class Game {
       that.createPlayers(playertemp);
 
       console.log(that.players);
-      const board = new Board();
+      const board = new Board(that.players);
       that.gamePlay();
     });
   }
@@ -99,12 +98,6 @@ export default class Game {
       placing.data('player', that.players[that.current].color);
       console.log(placing);
 
-      /* if(that.current == 0) {
-        that.current = 1;
-      } else if(that.current == 1) {
-        that.current = 0;
-      } */
-
       /* console.log(`row: ${placing.data('row')}, col: ${placing.data('col')}`); */
 
       const winner = that.checkIfWin(
@@ -119,6 +112,10 @@ export default class Game {
         return;
       }
 
+      that.players[that.current].coins = --that.players[that.current].coins;
+      $(`.coins-left-${that.players[that.current].color}`).html('Coins: ' + that.players[that.current].coins);
+      /* console.log($('.coins-left').html()); */
+
       if(that.current == 0) {
         that.current = 1;
       } else if(that.current == 1) {
@@ -130,6 +127,20 @@ export default class Game {
       console.log(counter);
       /* console.log("empty slots left: " + that.emptySlots());
       console.log("emptyCells variable: " + that.emptyCells); */
+    });
+
+    gameplay.on('click', '.reset-btn', function() {
+      let board = $('.col');
+
+      for(let cell of board) {
+        let c = $(cell);
+        if(!c.hasClass('empty')) {
+          c.removeClass(`${that.colors[0]}`).removeClass(`${that.colors[1]}`).addClass('empty');
+        }
+      }
+
+
+
     });
   }
 
@@ -150,7 +161,6 @@ export default class Game {
         j >= 0 &&
         j < that.cols &&
         next.data('player') === that.players[that.current].color) {
-          console.log("yoyo");
           total++;
           i += direction.i;
           j += direction.j;
@@ -207,5 +217,9 @@ export default class Game {
     
     return this.emptyCells;
   }
+  /* 
+  getPlayers() {
+    return this.players;
+  } */
 
 }

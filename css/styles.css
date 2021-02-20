@@ -262,3 +262,128 @@ hr {
 .player-container-green {
   background: rgba(1, 117, 1, 0.5);
 }
+
+.game-options-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.game-options-buttons {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.game-options-btn {
+  font-family: 'Poppins', sans-serif;
+  padding: 2px 10px;
+  font-size: 25px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 900;
+  border-radius: 15px;
+  /* border: 1px solid #333; */
+}
+
+.game-options-btn:hover {
+  opacity: 0.7;
+}
+
+.reset-btn {
+  width: 200px;
+  margin: 10px;
+  background: #f6830f;
+  border: 2px solid #db6400;
+  /* color: white; */
+}
+
+.exit-btn {
+  width: 200px;
+  margin: 10px;
+  background: #e40017;
+  border: 2px solid #91091e;
+  /* color: white; */
+}
+
+.highscore-container {
+  background: #eee;
+}
+
+.highscore-title {
+  margin-bottom: 0;
+}
+
+.highscore-description {
+  opacity: 0.5;
+  margin-top: 0;
+}
+
+.highscore-title-hr {
+  margin-top: 0;
+}
+
+.highscore-table {
+  /* background: rgba(128, 128, 128, 0.5); */
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.highscore-sub-titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.highscore-hr {
+  margin-top: 0;
+}
+
+.highscore {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-wrapper-btn-container {
+  position: absolute;
+  top: 90px;
+  right: 249px;
+}
+
+.container-btns {
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 8px;
+  padding: 0px 2px;
+  height: 20px;
+}
+
+.container-btns:hover {
+  opacity: 0.5;
+}
+
+.fas {
+  font-size: 22px;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  margin-left: 5px;
+  top: 21px;
+
+}
+
+.fa-home {
+  position: relative;
+  top: 16px;
+  margin-left: 8px;
+}
+
+.far {
+  font-size: 22px;
+  color: #333;
+  margin-left: 10px;
+  position: relative;
+  top: 20px;
+}
+
