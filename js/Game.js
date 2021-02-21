@@ -39,7 +39,7 @@ export default class Game {
       that.createPlayers(playertemp);
 
       console.log(that.players);
-      const board = new Board(that.players);
+      let board = new Board(that.players);
       that.highscoreList();
       that.gamePlay();
     });
@@ -132,7 +132,7 @@ export default class Game {
       console.log("emptyCells variable: " + that.emptyCells); */
     });
 
-    gameplay.on('click', '.reset-btn', function() {
+    /* gameplay.on('click', '.reset-btn', function() {
       let board = $('.col');
 
       for(let cell of board) {
@@ -149,7 +149,7 @@ export default class Game {
       that.current = 0;
       that.gameOver = false;
       
-    });
+    }); */
   }
 
   checkIfWin(row, col) {
@@ -300,5 +300,24 @@ export default class Game {
       obj.append(data);
       highscores.append(obj);
     }
+  }
+
+  reset() {
+    let board = $('.col');
+
+    for(let cell of board) {
+      let c = $(cell);
+      if(!c.hasClass('empty')) {
+        c.removeClass(`${this.colors[0]}`).removeClass(`${this.colors[1]}`).addClass('empty');
+      }
+    }
+
+    for(let player of this.players) {
+      player.coins = 21;
+      $(`.coins-left-${player.color}`).html('Coins: ' + player.coins);
+    }
+    this.current = 0;
+    this.gameOver = false; 
+    
   }
 }
