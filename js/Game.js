@@ -40,6 +40,7 @@ export default class Game {
 
       console.log(that.players);
       const board = new Board(that.players);
+      that.highscoreList();
       that.gamePlay();
     });
   }
@@ -87,12 +88,12 @@ export default class Game {
     });
 
     gameplay.on('click', '.col.empty', function() {
-      if(that.gameOver) { 
+      /* if(that.gameOver) { 
         alert('YO');
         return;
-      }
-      const targetCol = $(this).data('col');
-      const placing = placement(targetCol);
+      } */
+      let targetCol = $(this).data('col');
+      let placing = placement(targetCol);
       placing.removeClass(`empty hoverplayer-${that.players[that.current].color}`)
              .addClass(`${that.players[that.current].color}`);
       placing.data('player', that.players[that.current].color);
@@ -100,21 +101,23 @@ export default class Game {
 
       /* console.log(`row: ${placing.data('row')}, col: ${placing.data('col')}`); */
 
-      const winner = that.checkIfWin(
+      let winner = that.checkIfWin(
         placing.data('row'),
         placing.data('col')
       );
 
+      that.players[that.current].coins = --that.players[that.current].coins;
+      $(`.coins-left-${that.players[that.current].color}`).html('Coins: ' + that.players[that.current].coins);
+
       if(winner) {
         that.gameOver = true;
+        that.addScore(winner);
+        that.addToHighscore();
+        winner = null;
         alert(`Game over! Player ${that.colors[that.current]} has won`);
         $('.col.empty').removeClass('empty');
         return;
       }
-
-      that.players[that.current].coins = --that.players[that.current].coins;
-      $(`.coins-left-${that.players[that.current].color}`).html('Coins: ' + that.players[that.current].coins);
-      /* console.log($('.coins-left').html()); */
 
       if(that.current == 0) {
         that.current = 1;
@@ -139,8 +142,13 @@ export default class Game {
         }
       }
 
-
-
+      for(let player of that.players) {
+        player.coins = 21;
+        $(`.coins-left-${player.color}`).html('Coins: ' + player.coins);
+      }
+      that.current = 0;
+      that.gameOver = false;
+      
     });
   }
 
@@ -170,11 +178,12 @@ export default class Game {
     }
 
     function checkWin(directionA, directionB) {
-      const total = 1 +
+      let total = 1 +
         checkDirection(directionA) +
         checkDirection(directionB);
       if(total >= 4) {
         console.log("log from win");
+        console.log("total: " + total);
         return that.players[that.current];
       } else {
         return null;
@@ -217,9 +226,79 @@ export default class Game {
     
     return this.emptyCells;
   }
-  /* 
-  getPlayers() {
-    return this.players;
-  } */
 
+  addScore(winner) {
+    let coinsUsed = 21 - winner.coins;
+    winner.score = coinsUsed;
+    localStorage.setItem(`${winner.name}`, JSON.stringify(winner));
+  }
+
+  addToHighscore() {
+    $('.highscore').remove();
+    let scores = [{}];
+    let i = 0;
+
+    for(i = 0; i < localStorage.length; i++) {
+      let storage = Object.keys(localStorage);
+      let vals = JSON.parse(localStorage.getItem(storage[i]));
+      scores.push(
+        {
+          name: vals.name,
+          score: vals.score
+        }
+      );
+    }
+
+    scores.sort(function(a,b) {
+      return a.score - b.score;
+    });
+
+    let highscores = $('.highscores');
+
+    for(i = 0; i < scores.length; i++) {
+      if(scores[i].name === undefined && scores[i].score === undefined) {
+        continue;
+      }
+      let obj = $('<div>').addClass('highscore');
+      let data = $(`
+        <h4>${scores[i].name}</h4>
+        <h4 class="score">${scores[i].score}</h4>
+      `);
+      obj.append(data);
+      highscores.append(obj);
+    }
+  }
+
+  highscoreList() {
+    let scores = [{}];
+
+    for(let i = 0; i < localStorage.length; i++) {
+      let storage = Object.keys(localStorage);
+      let vals = JSON.parse(localStorage.getItem(storage[i]));
+      
+      scores.push({
+        name: vals.name,
+        score: vals.score
+      });
+    }
+
+    scores.sort(function(a,b) {
+      return a.score - b.score;
+    });
+
+    let highscores = $('.highscores');
+
+    for(let i = 0; i < scores.length; i++) {
+      if(scores[i].name === undefined && scores[i].score === undefined) {
+        continue;
+      }
+      let obj = $('<div>').addClass('highscore');
+      let data = $(`
+        <h4>${scores[i].name}</h4>
+        <h4>${scores[i].score}</h4>
+      `);
+      obj.append(data);
+      highscores.append(obj);
+    }
+  }
 }

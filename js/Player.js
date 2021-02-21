@@ -3,5 +3,6 @@ export default class Player {
     this.name = name;
     this.coins = 21;
     this.color = color;
+    this.score = 0;
   }
 }

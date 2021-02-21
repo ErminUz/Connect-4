@@ -80,18 +80,15 @@ export default class Board {
         <div class="highscore-top">
           <h1 class="highscore-title">Highscore list</h1>
           <hr class="highscore-title-hr">
-          <h5 class="highscore-description">Player score based on coins used on win</h5>
+          <h5 class="highscore-description">Highscore based on coins used on win</h5>
         </div>
         <div class="highscore-sub-titles">
-          <h3>Player</h3>
-          <h3>Coins used</h3>
+          <h3 class="player-hs">Player</h3>
+          <h3 class="coinsUsed-hs">Coins used</h3>
         </div>
         <hr class="highscore-hr">
         <div class="highscores">
-          <div class="highscore">
-            <h4>Anna</h4>
-            <h4>5</h4>
-          </div>
+          
         </div>
       </div>
     `);
