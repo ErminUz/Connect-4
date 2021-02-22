@@ -2,10 +2,10 @@ import Board from './Board.js'
 import Player from './Player.js'
 
 export default class Game {
-  constructor() {
+  constructor(players) {
     this.rows = 6;
     this.cols = 7;
-    this.players = [];
+    this.players = players;
     /* this.createGame(); */
     /* this.setPlayers(); */
     this.gameOver = false;
@@ -14,10 +14,10 @@ export default class Game {
     this.colors = ['red', 'green'];
     this.current = 0;
     this.emptyCells = 0;
-    this.togglePlayerCreation();
+    /* this.togglePlayerCreation();
     this.setPlayerButton();
-    this.playButton();
-    /* this.gamePlay(); */
+    this.playButton(); */
+    this.gamePlay();
   }
 
   togglePlayerCreation() {
@@ -39,7 +39,7 @@ export default class Game {
       that.createPlayers(playertemp);
 
       console.log(that.players);
-      const board = new Board(that.players);
+      let board = new Board(that.players);
       that.highscoreList();
       that.gamePlay();
     });
@@ -60,7 +60,8 @@ export default class Game {
 
   gamePlay() {
     /* console.log($('.col').length); */
-    const gameplay = $('#container');
+    /* const gameplay = $('#container'); */
+    const gameplay = $('.wrapper-board');
     const that = this;
     let counter = 0;
 
@@ -92,6 +93,7 @@ export default class Game {
         alert('YO');
         return;
       } */
+      console.log("click");
       let targetCol = $(this).data('col');
       let placing = placement(targetCol);
       placing.removeClass(`empty hoverplayer-${that.players[that.current].color}`)
@@ -132,7 +134,7 @@ export default class Game {
       console.log("emptyCells variable: " + that.emptyCells); */
     });
 
-    gameplay.on('click', '.reset-btn', function() {
+    /* gameplay.on('click', '.reset-btn', function() {
       let board = $('.col');
 
       for(let cell of board) {
@@ -149,7 +151,7 @@ export default class Game {
       that.current = 0;
       that.gameOver = false;
       
-    });
+    }); */
   }
 
   checkIfWin(row, col) {
@@ -300,5 +302,24 @@ export default class Game {
       obj.append(data);
       highscores.append(obj);
     }
+  }
+
+  reset() {
+    let board = $('.col');
+
+    for(let cell of board) {
+      let c = $(cell);
+      if(!c.hasClass('empty')) {
+        c.removeClass(`${this.colors[0]}`).removeClass(`${this.colors[1]}`).addClass('empty');
+      }
+    }
+
+    for(let player of this.players) {
+      player.coins = 21;
+      $(`.coins-left-${player.color}`).html('Coins: ' + player.coins);
+    }
+    this.current = 0;
+    this.gameOver = false; 
+    
   }
 }
