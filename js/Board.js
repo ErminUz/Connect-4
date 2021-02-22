@@ -32,15 +32,15 @@ export default class Board {
           </div>
         </div> 
         <div class="top-wrapper-btn-container">
-          <div class="container-btns">
+          <div class="container-btns home">
             <h5 class="hs-title-btn">Home</h5>
             <i class="fas fa-home"></i>
           </div>
-          <div class="container-btns">
+          <div class="container-btns help">
             <h5 class="hs-title-btn">Help</h5>
             <i class="far fa-question-circle"></i>
           </div>
-          <div class="container-btns">
+          <div class="container-btns hs">
             <h5 class="hs-title-btn">Highscores</h5>
             <i class="fas fa-medal"></i>
           </div>

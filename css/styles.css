@@ -395,3 +395,72 @@ hr {
   opacity: 0.6;
 }
 
+.help-box {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  width: 582px;
+  height: 524px;
+  position: absolute;
+  top: 253px;
+  left: 662px;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(20px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.top-help-title {
+  text-align: center;
+  position: relative;
+  bottom: 22px;
+  margin-bottom: 10px;
+}
+
+.middle-help-title h2 {
+  margin: 0;
+}
+
+.middle-help-title h4 {
+  margin: 0;
+}
+
+.middle-help-title h5 {
+  margin: 0;
+}
+
+.bottom-help-title h2 {
+  margin: 0;
+}
+
+.bottom-help-title h4 {
+  margin: 0;
+}
+
+.bottom-help-title h5 {
+  margin: 0;
+}
+
+.bottom-help-title {
+  margin-top: 5px;
+}
+
+.fade {
+  opacity: 0.6;
+}
+
+.rules-title {
+  margin-bottom: 0px;
+}
+
+.rules-desc {
+  margin-top: 0px;
+}
+
+.gameplay-desc {
+  width: 75%;
+}
+
+.fa-question {
+  font-size: 30px;
+}
+
