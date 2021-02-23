@@ -544,3 +544,129 @@ a {
   background: rgba(51, 51, 51, 0.1);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+@media only screen and (min-width: 768px) {
+
+  .bottom {
+    display: flex;
+  }
+
+  .flex {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .game-center {
+    height: 360px;
+  }
+  
+  .game-info {
+    height: 360px;
+    padding-bottom: 5px;
+  }
+
+  .player-creation {
+    width: 70%;
+  }
+
+  .top-wrapper-btn-container {
+    display: flex;
+    margin: 0 auto;
+    position: absolute;
+    top: 200px;
+  }
+
+  .home {
+    margin-right: 10px;
+  }
+
+  .help {
+    margin-right: 10px;
+  }
+
+  .highscore-container {
+    margin-top: 65px;
+  }
+
+  .highscore-table {
+    width: 90%;
+  }
+
+  .help-box {
+    height: 530px;
+    left: 93px;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 767px){
+  .bottom {
+    display: none;
+  }
+
+  #container {
+    height: 840px;
+  }
+  
+  .middle {
+    margin-top: 10px;
+    display: block;
+    padding: 10px;
+  }
+
+  .game-center {
+    width: 315px;
+    margin-bottom: 10px;
+  }
+
+  .game-info {
+    width: 315px;
+    height: 340px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+  }
+
+  .player-creation {
+    width: 345px;
+    height: 480px;
+  }
+
+  .col {
+    width: 39px;
+    height: 39px;
+  }
+
+  .player-container {
+    width: 150px;
+    margin: 5px;
+  }
+
+  .flex {
+    width: 95%;
+  }
+
+  .top-wrapper-btn-container {
+    margin: 0 auto;
+    width: 370px;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    top: 200px;
+    left: 8px;
+  }
+
+  .help-box {
+    position: absolute;
+    top: 250px;
+    left: 20px;
+    width: 90%;
+    height: 615px;
+  }
+
+  .winner-container {
+    width: 90%;
+  }
+
+  .highscore-table {
+    width: 90%;
+  }
+}
