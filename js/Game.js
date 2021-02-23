@@ -135,24 +135,6 @@ export default class Game {
       console.log("emptyCells variable: " + that.emptyCells); */
     });
 
-    /* gameplay.on('click', '.reset-btn', function() {
-      let board = $('.col');
-
-      for(let cell of board) {
-        let c = $(cell);
-        if(!c.hasClass('empty')) {
-          c.removeClass(`${that.colors[0]}`).removeClass(`${that.colors[1]}`).addClass('empty');
-        }
-      }
-
-      for(let player of that.players) {
-        player.coins = 21;
-        $(`.coins-left-${player.color}`).html('Coins: ' + player.coins);
-      }
-      that.current = 0;
-      that.gameOver = false;
-      
-    }); */
   }
 
   checkIfWin(row, col) {

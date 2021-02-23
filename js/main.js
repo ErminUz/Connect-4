@@ -120,6 +120,27 @@ $(document).ready(function() {
     window.location.href = '#highscore';
   });
 
+  gameplay.on('click', '.new-game-btn', function() {
+    restarting();
+    game.reset();
+    
+    game = new Game(players);
+    board = new Board(players);
+    game.gamePlay();
+    game.highscoreList();
+  });
+
+  gameplay.on('click', '.home-btn', function() {
+    $(".wrapper-board, .game-options-container, .highscore-container").remove();
+    $('.frontpage').toggle();
+    
+    while(players.length > 0) {
+      players.pop();
+      game.players.pop();
+      board.players.pop();
+    }
+  });
+
 });
 
 function createPlayers(list) {
