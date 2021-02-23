@@ -6,17 +6,12 @@ export default class Game {
     this.rows = 6;
     this.cols = 7;
     this.players = players;
-    /* this.createGame(); */
-    /* this.setPlayers(); */
     this.gameOver = false;
     this.playerturn = 1;
     this.maxRounds = 42;
     this.colors = ['red', 'green'];
     this.current = 0;
     this.emptyCells = 0;
-    /* this.togglePlayerCreation();
-    this.setPlayerButton();
-    this.playButton(); */
     this.gamePlay();
   }
 
@@ -59,8 +54,6 @@ export default class Game {
   }
 
   gamePlay() {
-    /* console.log($('.col').length); */
-    /* const gameplay = $('#container'); */
     const gameplay = $('.wrapper-board');
     const that = this;
     let counter = 0;
@@ -89,18 +82,12 @@ export default class Game {
     });
 
     gameplay.on('click', '.col.empty', function() {
-      /* if(that.gameOver) { 
-        alert('YO');
-        return;
-      } */
-      that.loadDrawUI();
       let targetCol = $(this).data('col');
       let placing = placement(targetCol);
 
       placing.removeClass(`empty hoverplayer-${that.players[that.current].color}`)
              .addClass(`${that.players[that.current].color}`);
       placing.data('player', that.players[that.current].color);
-      console.log(placing);
 
       let winner = that.checkIfWin(
         placing.data('row'),
@@ -126,7 +113,6 @@ export default class Game {
         $('.col.empty').removeClass('empty');
         return;
       }
-      console.log(winner);
 
       if(that.current == 0) {
         that.current = 1;
@@ -168,10 +154,7 @@ export default class Game {
       let total = 1 +
         checkDirection(directionA) +
         checkDirection(directionB);
-      console.log(total);
       if(total >= 4) {
-        console.log("log from win");
-        console.log("total: " + total);
         return that.players[that.current];
       } else {
         return null;

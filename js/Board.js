@@ -11,10 +11,8 @@ export default class Board {
   }
 
   board() {
-    console.log("printing players from inside Board class: ", this.players);
-
-    let player1 = $('.input1').val() ? $('.input1').val() : 'empty';
-    let player2 = $('.input2').val() ? $('.input2').val() : 'empty';
+    let player1 = $('.input1').val() ? $('.input1').val() : 'red';
+    let player2 = $('.input2').val() ? $('.input2').val() : 'green';
 
     const container = $('#container');
     const wrapper = $('<div>').addClass('wrapper-board');

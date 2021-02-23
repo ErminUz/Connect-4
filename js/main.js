@@ -10,57 +10,13 @@ let game;
 let board;
 let setPlayersUI = new SetPlayerComponent();
 
-
-/* let players = [{}]; */
-
 $(document).ready(function() {
-  /* let playertemp = []; */
   const gameplay = $('#container');
-  
-  /* $('.set-player-btn').on('click', function(){
-    console.log("hello");
-    $('.player-creation-container').toggleClass('hide');
-  }); */
 
   setPlayerButton();
   closePlayerSetting();
   play();
   help();
-
-  /* $(document).on('click', '.close-player-selection-btn', function(){
-    $('.player-creation-container').toggleClass('hide');
-  }); */
-
-  /* $(document).on('click', '.play', function(){
-    console.log('yoyo');
-
-    $('input[name="player-input"]').each(function() {
-      console.log($(this).val());
-      playertemp.push($(this).val());
-    });
-
-    console.log("playertemp: " + playertemp);
-
-    createPlayers(playertemp);
-
-    console.log("players: " + players);
-
-    $('.player-creation-container').toggleClass('hide');
-    $('.frontpage').toggle();
-    
-    board = new Board(players);
-    game = new Game(players);
-    while(playertemp.length > 0) {
-      playertemp.pop();
-    }
-    //game.gamePlay();
-    game.highscoreList();
-    
-  }); */
-
-  /* let game = new Game(); */
-  /* let setPlayersUI = new SetPlayerComponent(); */
-
 
   gameplay.on('click', '.reset-btn', function() {
     restarting();
@@ -84,16 +40,9 @@ $(document).ready(function() {
       game.players.pop();
       board.players.pop();
     }
-    console.log("players from exit-btn: " + players);
     game = null;
     board = null;
     $('.frontpage').toggle();
-    /* $('.player-creation-container').toggleClass('hide'); */
-    /* $('.player-creation').toggle(); */
-    /* setPlayersUI = new SetPlayerComponent(); */
-    /* setPlayerButton();
-    closePlayerSetting(); */
-    /* play(); */
   });
 
   gameplay.on('click', '.home', function() {
@@ -182,19 +131,21 @@ function restarting() {
 
 function play() {
   let playertemp = [];
+  let index = 0;
   $(document).on('click', '.play', function(){
-    console.log('yoyo');
 
     $('input[name="player-input"]').each(function() {
-      console.log($(this).val());
       playertemp.push($(this).val());
     });
 
-    console.log("playertemp: " + playertemp);
-
     createPlayers(playertemp);
 
-    console.log("players: " + players);
+    for(let player of players) {
+      if(player.name == "") {
+        player.name = colors[index];
+        index++;
+      }
+    }
 
     $('.player-creation-container').toggleClass('hide');
     $('.frontpage').toggle();
@@ -204,15 +155,13 @@ function play() {
     while(playertemp.length > 0) {
       playertemp.pop();
     }
-    /* game.gamePlay(); */
     game.highscoreList();
-    
+    index = 0;
   });
 }
 
 function setPlayerButton() {
   $('.set-player-btn').on('click', function(){
-    console.log("again");
     $('.player-creation-container').toggleClass('hide');
   });
 }
