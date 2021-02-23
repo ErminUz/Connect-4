@@ -545,6 +545,49 @@ a {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.draw-container {
+  width: 25%;
+  margin: 0 auto;
+  position: absolute;
+  left: 500px;
+  bottom: 370px;
+  padding: 5px 25px;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(238, 238, 238, 0.2);
+  border-radius: 10px;
+}
+
+.draw-restart-btn {
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  outline: none;
+  border-radius: 6px;
+  font-weight: 700;
+  padding: 2px 10px;
+  text-align: center;
+  background: #845ec288;
+}
+
+.draw-home-btn {
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  outline: none;
+  border-radius: 6px;
+  font-weight: 700;
+  padding: 2px 10px;
+  text-align: center;
+  background: #845ec288;
+  display: block;
+  margin: 12px auto 5px auto;
+}
+
+.draw-restart-btn:hover, .draw-home-btn:hover {
+  opacity: 0.7;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
   .bottom {
@@ -596,6 +639,14 @@ a {
     height: 530px;
     left: 93px;
   }
+
+  .draw-container {
+    position: absolute;
+    left: 255px;
+    bottom: 400px;
+    
+  }
+  
 }
 
 @media only screen and (min-width: 375px) and (max-width: 767px){
@@ -669,4 +720,12 @@ a {
   .highscore-table {
     width: 90%;
   }
+
+  .draw-container {
+    width: 51%;
+    position: absolute;
+    left: 66px;
+    bottom: 300px;
+  }
+  
 }

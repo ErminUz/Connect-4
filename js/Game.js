@@ -93,20 +93,26 @@ export default class Game {
         alert('YO');
         return;
       } */
-      console.log("click");
+      that.loadDrawUI();
       let targetCol = $(this).data('col');
       let placing = placement(targetCol);
+
       placing.removeClass(`empty hoverplayer-${that.players[that.current].color}`)
              .addClass(`${that.players[that.current].color}`);
       placing.data('player', that.players[that.current].color);
       console.log(placing);
 
-      /* console.log(`row: ${placing.data('row')}, col: ${placing.data('col')}`); */
-
       let winner = that.checkIfWin(
         placing.data('row'),
         placing.data('col')
       );
+
+      counter++;
+
+      if(counter >= that.maxRounds && winner === null) {
+        $('.col.empty').removeClass('empty');
+        that.loadDrawUI();
+      }
 
       that.players[that.current].coins = --that.players[that.current].coins;
       $(`.coins-left-${that.players[that.current].color}`).html('Coins: ' + that.players[that.current].coins);
@@ -117,10 +123,10 @@ export default class Game {
         that.addToHighscore();
         that.loadWinnerUI(winner);
         winner = null;
-        /* alert(`Game over! Player ${that.colors[that.current]} has won`); */
         $('.col.empty').removeClass('empty');
         return;
       }
+      console.log(winner);
 
       if(that.current == 0) {
         that.current = 1;
@@ -129,10 +135,6 @@ export default class Game {
       }
 
       $(this).trigger('mouseenter');
-      counter++;
-      console.log(counter);
-      /* console.log("empty slots left: " + that.emptySlots());
-      console.log("emptyCells variable: " + that.emptyCells); */
     });
 
   }
@@ -166,6 +168,7 @@ export default class Game {
       let total = 1 +
         checkDirection(directionA) +
         checkDirection(directionB);
+      console.log(total);
       if(total >= 4) {
         console.log("log from win");
         console.log("total: " + total);
@@ -176,7 +179,7 @@ export default class Game {
     }
 
     function checkDiagonalBLtoTR() {
-      return checkWin({i: 1, j: -1}, {i: 1, j:1});
+      return checkWin({i: 1, j: -1}, {i: -1, j:1});
     }
     
     function checkDiagonalTLtoBR() {
@@ -321,5 +324,21 @@ export default class Game {
     `);
     container.append(dom);
     $(gameplay).append(container);
+  }
+
+  loadDrawUI() {
+    const gameplay = $('.wrapper-board');
+    let container = $('<div>').addClass('draw-container');
+    let dom = $(`
+      <div class="draw-title">
+        <h1>Draw!</h1>
+      </div>
+      <div class="draw-btns">
+        <button class="draw-restart-btn">Restart</button>
+        <button class="draw-home-btn">Home</button>
+      </div>
+    `);
+    container.append(dom);
+    gameplay.append(container);
   }
 }

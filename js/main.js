@@ -11,7 +11,7 @@ let board;
 let setPlayersUI = new SetPlayerComponent();
 
 
-let players = [{}];
+/* let players = [{}]; */
 
 $(document).ready(function() {
   /* let playertemp = []; */
@@ -133,6 +133,27 @@ $(document).ready(function() {
   });
 
   gameplay.on('click', '.home-btn', function() {
+    $(".wrapper-board, .game-options-container, .highscore-container").remove();
+    $('.frontpage').toggle();
+    
+    while(players.length > 0) {
+      players.pop();
+      game.players.pop();
+      board.players.pop();
+    }
+  });
+
+  gameplay.on('click', '.draw-restart-btn', function() {
+    restarting();
+    game.reset();
+    
+    game = new Game(players);
+    board = new Board(players);
+    game.gamePlay();
+    game.highscoreList();
+  });
+
+  gameplay.on('click', '.draw-home-btn', function() {
     $(".wrapper-board, .game-options-container, .highscore-container").remove();
     $('.frontpage').toggle();
     
