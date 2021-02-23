@@ -116,6 +116,10 @@ $(document).ready(function() {
     $('.help-box').toggleClass('hide');
   });
 
+  gameplay.on('click', '.hs', function() {
+    window.location.href = '#highscore';
+  });
+
 });
 
 function createPlayers(list) {
@@ -182,7 +186,7 @@ function help() {
       <i class="fas fa-question"></i>
     </div>
     <div class="middle-help-title">
-      <h2 class="bb">Rules & Gameplay</h2>
+      <h2>Rules & Gameplay</h2>
       <h4 class="rules-title">Rules<h4>
       <h5 class="rules-desc fade">One coin per playerturn. Each player has 21 coins per game.</h5>
       <h4>Gameplay</h4>

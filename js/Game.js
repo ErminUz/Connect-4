@@ -115,8 +115,9 @@ export default class Game {
         that.gameOver = true;
         that.addScore(winner);
         that.addToHighscore();
+        that.loadWinnerUI(winner);
         winner = null;
-        alert(`Game over! Player ${that.colors[that.current]} has won`);
+        /* alert(`Game over! Player ${that.colors[that.current]} has won`); */
         $('.col.empty').removeClass('empty');
         return;
       }
@@ -320,6 +321,23 @@ export default class Game {
     }
     this.current = 0;
     this.gameOver = false; 
-    
+  }
+
+  loadWinnerUI(winner) {
+    const gameplay = $('.wrapper-board');
+    let container = $('<div>').addClass('winner-container');
+    let dom = $(`
+      <div class="top-win-ui">
+        <i class="fas fa-trophy"></i>
+        <h2>${winner.name} won</h2>
+        <h4>Moves made by ${winner.name}: ${winner.score}</h4>
+      </div>
+      <div class="win-ui-btns">
+        <button class="new-game-btn">New Game</button>
+        <button class="home-btn">Home</button>
+      </div>
+    `);
+    container.append(dom);
+    $(gameplay).append(container);
   }
 }
