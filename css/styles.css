@@ -545,7 +545,7 @@ a {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
 
   .bottom {
     display: flex;
