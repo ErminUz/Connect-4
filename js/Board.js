@@ -32,15 +32,15 @@ export default class Board {
           </div>
         </div> 
         <div class="top-wrapper-btn-container">
-          <div class="container-btns">
+          <div class="container-btns home">
             <h5 class="hs-title-btn">Home</h5>
             <i class="fas fa-home"></i>
           </div>
-          <div class="container-btns">
+          <div class="container-btns help">
             <h5 class="hs-title-btn">Help</h5>
             <i class="far fa-question-circle"></i>
           </div>
-          <div class="container-btns">
+          <div class="container-btns hs">
             <h5 class="hs-title-btn">Highscores</h5>
             <i class="fas fa-medal"></i>
           </div>
@@ -78,7 +78,10 @@ export default class Board {
     highscoreSection.append(`
       <div class="highscore-table">
         <div class="highscore-top">
-          <h1 class="highscore-title">Highscore list</h1>
+          <a href="#highscore">
+          <h1 class="highscore-title" id="highscore">Highscore list</h1>
+          </a>
+          
           <hr class="highscore-title-hr">
           <h5 class="highscore-description">Highscore based on coins used on win</h5>
         </div>

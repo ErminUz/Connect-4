@@ -2,10 +2,10 @@ import Board from './Board.js'
 import Player from './Player.js'
 
 export default class Game {
-  constructor() {
+  constructor(players) {
     this.rows = 6;
     this.cols = 7;
-    this.players = [];
+    this.players = players;
     /* this.createGame(); */
     /* this.setPlayers(); */
     this.gameOver = false;
@@ -14,10 +14,10 @@ export default class Game {
     this.colors = ['red', 'green'];
     this.current = 0;
     this.emptyCells = 0;
-    this.togglePlayerCreation();
+    /* this.togglePlayerCreation();
     this.setPlayerButton();
-    this.playButton();
-    /* this.gamePlay(); */
+    this.playButton(); */
+    this.gamePlay();
   }
 
   togglePlayerCreation() {
@@ -60,7 +60,8 @@ export default class Game {
 
   gamePlay() {
     /* console.log($('.col').length); */
-    const gameplay = $('#container');
+    /* const gameplay = $('#container'); */
+    const gameplay = $('.wrapper-board');
     const that = this;
     let counter = 0;
 
@@ -92,6 +93,7 @@ export default class Game {
         alert('YO');
         return;
       } */
+      console.log("click");
       let targetCol = $(this).data('col');
       let placing = placement(targetCol);
       placing.removeClass(`empty hoverplayer-${that.players[that.current].color}`)
@@ -113,8 +115,9 @@ export default class Game {
         that.gameOver = true;
         that.addScore(winner);
         that.addToHighscore();
+        that.loadWinnerUI(winner);
         winner = null;
-        alert(`Game over! Player ${that.colors[that.current]} has won`);
+        /* alert(`Game over! Player ${that.colors[that.current]} has won`); */
         $('.col.empty').removeClass('empty');
         return;
       }
@@ -132,24 +135,6 @@ export default class Game {
       console.log("emptyCells variable: " + that.emptyCells); */
     });
 
-    /* gameplay.on('click', '.reset-btn', function() {
-      let board = $('.col');
-
-      for(let cell of board) {
-        let c = $(cell);
-        if(!c.hasClass('empty')) {
-          c.removeClass(`${that.colors[0]}`).removeClass(`${that.colors[1]}`).addClass('empty');
-        }
-      }
-
-      for(let player of that.players) {
-        player.coins = 21;
-        $(`.coins-left-${player.color}`).html('Coins: ' + player.coins);
-      }
-      that.current = 0;
-      that.gameOver = false;
-      
-    }); */
   }
 
   checkIfWin(row, col) {
@@ -318,6 +303,23 @@ export default class Game {
     }
     this.current = 0;
     this.gameOver = false; 
-    
+  }
+
+  loadWinnerUI(winner) {
+    const gameplay = $('.wrapper-board');
+    let container = $('<div>').addClass('winner-container');
+    let dom = $(`
+      <div class="top-win-ui">
+        <i class="fas fa-trophy"></i>
+        <h2>${winner.name} won</h2>
+        <h4>Moves made by ${winner.name}: ${winner.score}</h4>
+      </div>
+      <div class="win-ui-btns">
+        <button class="new-game-btn">New Game</button>
+        <button class="home-btn">Home</button>
+      </div>
+    `);
+    container.append(dom);
+    $(gameplay).append(container);
   }
 }
